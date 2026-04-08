@@ -4,12 +4,12 @@ import { type MachineGroup } from '@/entites/MachineGroup';
 const db = new Dexie('SettingAimTools') as Dexie & {
   machineGroups: EntityTable<
     MachineGroup,
-    'id'
+    'groupName'
   >;
 };
 
 db.version(1).stores({
-  machineGroups: '++id',
+  machineGroups: 'groupName',
 });
 
 export default db;

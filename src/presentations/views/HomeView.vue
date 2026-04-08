@@ -4,6 +4,7 @@
 <template>
   <main id="homeView">
     <RouterLink class="link" to="/prob-calc">確率計算</RouterLink>
+    <RouterLink class="link" to="/machine-group-memo">台番メモ</RouterLink>
     <RouterLink class="link" to="/total-calc">複数台合算計算</RouterLink>
   </main>
 </template>

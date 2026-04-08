@@ -18,6 +18,11 @@ const router = createRouter({
       name: 'total-calc',
       component: () => import('@/presentations/views/TotalCalcView.vue'),
     },
+    {
+      path: '/machine-group-memo',
+      name: 'machine-group-memo',
+      component: () => import('@/presentations/views/MachineGroupMemoView.vue'),
+    },
   ],
 })
 
