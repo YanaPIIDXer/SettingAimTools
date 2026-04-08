@@ -19,22 +19,22 @@ export default defineConfig({
           display: 'standalone',
           icons: [
             {
-              src: 'icon-64x64.png',
+              src: 'favicons/icon-64x64.png',
               sizes: '64x64',
               type: 'image/png',
             },
             {
-              src: 'icon-192x192.png',
+              src: 'favicons/icon-192x192.png',
               sizes: '192x192',
               type: 'image/png',
             },
             {
-              src: 'icon-512x512.png',
+              src: 'favicons/icon-512x512.png',
               sizes: '512x512',
               type: 'image/png',
             },
             {
-              src: 'icon-512x512.png',
+              src: 'favicons/icon-512x512.png',
               sizes: '512x512',
               type: 'image/png',
               purpose: 'maskable',
