@@ -1,12 +1,6 @@
 <script setup lang="ts">
 import { ref, reactive } from 'vue';
-
-interface MachineStatus {
-  machineNo: number;
-  games: number;
-  bigCount: number;
-  regCount: number;
-}
+import { type MachineStatus } from '@/entites/MachineStatus';
 
 const machines = ref<MachineStatus[]>([]);
 const nextMachine = reactive<MachineStatus>({
