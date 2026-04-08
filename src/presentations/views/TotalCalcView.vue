@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, reactive } from 'vue';
+import { ref, computed } from 'vue';
 import { type MachineStatus } from '@/entites/MachineStatus';
 
 const machines = ref<MachineStatus[]>([{
@@ -8,6 +8,28 @@ const machines = ref<MachineStatus[]>([{
   bigCount: 0,
   regCount: 0,
 }]);
+
+const totalGames = computed(() => {
+  let total = 0;
+  machines.value.forEach(x => {
+    total += x.games;
+  });
+  return total;
+});
+const totalBigCount = computed(() => {
+  let total = 0;
+  machines.value.forEach(x => {
+    total += x.bigCount;
+  });
+  return total;
+});
+const totalRegCount = computed(() => {
+  let total = 0;
+  machines.value.forEach(x => {
+    total += x.regCount;
+  });
+  return total;
+});
 
 /**
  * 確率計算
@@ -55,10 +77,19 @@ const onKeyDown = (e: KeyboardEvent) => {
           <td class="forInput"><input type="number" v-model="machine.games" pattern="\d*" min=0 @keydown="onKeyDown" /></td>
           <td class="forInput"><input type="number" v-model="machine.bigCount" pattern="\d*" min=0 @keydown="onKeyDown" /></td>
           <td class="forInput"><input type="number" v-model="machine.regCount" pattern="\d*" min=0 @keydown="onKeyDown" /></td>
-          <td>{{ calcRatio(machine.games, machine.bigCount) }}</td>
-          <td>{{ calcRatio(machine.games, machine.regCount) }}</td>
-          <td>{{ calcRatio(machine.games, machine.bigCount + machine.regCount) }}</td>
+          <td>1/{{ calcRatio(machine.games, machine.bigCount) }}</td>
+          <td>1/{{ calcRatio(machine.games, machine.regCount) }}</td>
+          <td>1/{{ calcRatio(machine.games, machine.bigCount + machine.regCount) }}</td>
           <td v-if="i === machines.length - 1" class="lastItem"></td>
+        </tr>
+        <tr>
+          <td>合算</td>
+          <td>{{ totalGames }}</td>
+          <td>{{ totalBigCount }}</td>
+          <td>{{ totalRegCount }}</td>
+          <td>1/{{ calcRatio(totalGames, totalBigCount) }}</td>
+          <td>1/{{ calcRatio(totalGames, totalRegCount) }}</td>
+          <td>1/{{ calcRatio(totalGames, totalBigCount + totalRegCount) }}</td>
         </tr>
       </tbody>
     </table>
