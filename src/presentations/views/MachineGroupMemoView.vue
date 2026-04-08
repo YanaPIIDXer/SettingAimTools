@@ -15,7 +15,7 @@ const nextNumber = ref(0);
 const onAddGroup = () => {
   const newValue: MachineGroup = {
     groupName: inputGroupName.value,
-    machineNumbers: [],
+    machineNumbers: [0],
   };
   groups.value.push(JSON.parse(JSON.stringify(newValue)));
   currentGroup.value = JSON.parse(JSON.stringify(currentGroup.value));
@@ -38,8 +38,15 @@ const onGroupChange = (e: Event) => {
 /**
  * 値の更新
  */
-const onUpdateValue = async () => {
+const onUpdateValue = async (e: Event) => {
   if (!currentGroup.value) { return; }
+  
+  const target = e.target as HTMLElement;
+  const td = target.closest('td');
+  if (td?.querySelector('.lastItem')) {
+    currentGroup.value.machineNumbers.push(0);
+  }
+
   const index = groups.value.findIndex(x => x.groupName === currentGroup.value?.groupName);
   if (index === -1) {
     groups.value.push(JSON.parse(JSON.stringify(currentGroup.value)));
@@ -47,26 +54,18 @@ const onUpdateValue = async () => {
     groups.value[index].machineNumbers.splice(0);
     groups.value[index].machineNumbers.push(...currentGroup.value.machineNumbers);
   }
+  
   await db.machineGroups.clear();
   await db.machineGroups.bulkAdd(JSON.parse(JSON.stringify(groups.value)));
 };
 
+/**
+ * クリア
+ */
 const clear = () => {
   if (!confirm('クリアしますか？')) { return; }
   db.machineGroups.clear();
   currentGroup.value = null;
-}
-
-/**
- * 次のナンバー入力
- */
-const onAddNextNumber = (e: KeyboardEvent) => {
-  if (e.key.toLowerCase() !== 'enter') { return; }
-  if (!currentGroup.value) { return; }
-  
-  currentGroup.value.machineNumbers.push(nextNumber.value);
-  onUpdateValue();
-  nextNumber.value = 0;
 };
 
 onMounted(async () => {
@@ -95,12 +94,8 @@ onMounted(async () => {
         <tbody>
           <tr v-for="(_, i) in machineNumbers" :key="i">
             <td>
-              <input type="number" pattern="\d*" v-model="machineNumbers[i]" @change="onUpdateValue" />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <input class="nextInput" type="number" pattern="\d*" v-model="nextNumber" @keydown="onAddNextNumber" />
+              <input type="number" pattern="\d*" v-model="machineNumbers[i]" @keydown="onUpdateValue" />
+              <input v-if="i === machineNumbers.length - 1" type="hidden" class="lastItem" />
             </td>
           </tr>
         </tbody>
