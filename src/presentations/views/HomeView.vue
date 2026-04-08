@@ -2,7 +2,8 @@
 </script>
 
 <template>
-  <RouterView />
+  <main id="homeView">
+  </main>
 </template>
 
 <style lang="sass" scoped>
