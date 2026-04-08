@@ -7,7 +7,6 @@ const groups = ref<MachineGroup[]>([]);
 const inputGroupName = ref('');
 const currentGroup = ref<MachineGroup | null>(null);
 const machineNumbers = computed(() => currentGroup?.value?.machineNumbers ?? []);
-const nextNumber = ref(0);
 
 /**
  * グループ追加
@@ -15,7 +14,7 @@ const nextNumber = ref(0);
 const onAddGroup = () => {
   const newValue: MachineGroup = {
     groupName: inputGroupName.value,
-    machineNumbers: [0],
+    machineNumbers: new Array(100).fill(0),
   };
   groups.value.push(JSON.parse(JSON.stringify(newValue)));
   currentGroup.value = JSON.parse(JSON.stringify(currentGroup.value));
@@ -41,12 +40,6 @@ const onGroupChange = (e: Event) => {
 const onUpdateValue = async (e: Event) => {
   if (!currentGroup.value) { return; }
   
-  const target = e.target as HTMLElement;
-  const td = target.closest('td');
-  if (td?.querySelector('.lastItem')) {
-    currentGroup.value.machineNumbers.push(0);
-  }
-
   const index = groups.value.findIndex(x => x.groupName === currentGroup.value?.groupName);
   if (index === -1) {
     groups.value.push(JSON.parse(JSON.stringify(currentGroup.value)));
@@ -94,8 +87,7 @@ onMounted(async () => {
         <tbody>
           <tr v-for="(_, i) in machineNumbers" :key="i">
             <td>
-              <input type="number" pattern="\d*" v-model="machineNumbers[i]" @keydown="onUpdateValue" />
-              <input v-if="i === machineNumbers.length - 1" type="hidden" class="lastItem" />
+              <input type="number" pattern="\d*" v-model="machineNumbers[i]" @keydown="onUpdateValue" :style="{ opacity: machineNumbers[i] === 0 ? 0.2 : 1 }" />
             </td>
           </tr>
         </tbody>
