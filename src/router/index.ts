@@ -13,6 +13,11 @@ const router = createRouter({
       name: 'prob-calc',
       component: () => import('@/presentations/views/ProbCalc.vue'),
     },
+    {
+      path: '/total-calc',
+      name: 'total-calc',
+      component: () => import('@/presentations/views/TotalCalcView.vue'),
+    },
   ],
 })
 
