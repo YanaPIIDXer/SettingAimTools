@@ -25,13 +25,13 @@ const onUpdate = () => {
     <h1>確率計算</h1>
     <div>
       <label>
-        ゲーム数 <input type="number" v-model="gameCount" @change="onUpdate" min="0" /><br />
+        ゲーム数 <input type="number" pattern="\d*" v-model="gameCount" @change="onUpdate" min="0" /><br />
       </label>
       <label>
-        BIG回数 <input type="number" v-model="bigCount" @change="onUpdate" min="0" /><br />
+        BIG回数 <input type="number" pattern="\d*" v-model="bigCount" @change="onUpdate" min="0" /><br />
       </label>
       <label>
-        REG回数 <input type="number" v-model="regCount" @change="onUpdate" min="0" /><br />
+        REG回数 <input type="number" pattern="\d*" v-model="regCount" @change="onUpdate" min="0" /><br />
       </label>
     </div>
     <div v-if="isValid">

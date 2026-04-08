@@ -97,19 +97,19 @@ const onKeyDown = (e: KeyboardEvent) => {
       </thead>
       <tbody>
         <tr v-for="(machine, i) in machines" :key="i">
-          <td class="forInput"><input type="number" v-model="machine.machineNo" min=0 @keydown="onKeyDown" /></td>
-          <td class="forInput"><input type="number" v-model="machine.games" min=0 @keydown="onKeyDown" /></td>
-          <td class="forInput"><input type="number" v-model="machine.bigCount" min=0 @keydown="onKeyDown" /></td>
-          <td class="forInput"><input type="number" v-model="machine.regCount" min=0 @keydown="onKeyDown" /></td>
+          <td class="forInput"><input type="number" v-model="machine.machineNo" pattern="\d*" min=0 @keydown="onKeyDown" /></td>
+          <td class="forInput"><input type="number" v-model="machine.games" pattern="\d*" min=0 @keydown="onKeyDown" /></td>
+          <td class="forInput"><input type="number" v-model="machine.bigCount" pattern="\d*" min=0 @keydown="onKeyDown" /></td>
+          <td class="forInput"><input type="number" v-model="machine.regCount" pattern="\d*" min=0 @keydown="onKeyDown" /></td>
           <td>{{ calcRatio(machine.games, machine.bigCount) }}</td>
           <td>{{ calcRatio(machine.games, machine.regCount) }}</td>
           <td>{{ calcRatio(machine.games, machine.bigCount + machine.regCount) }}</td>
         </tr>
         <tr class="forNext">
-          <td class="forInput"><input type="number" v-model="nextMachine.machineNo" min=0 @keydown="onKeyDown" /></td>
-          <td class="forInput"><input type="number" v-model="nextMachine.games" min=0  @keydown="onKeyDown" /></td>
-          <td class="forInput"><input type="number" v-model="nextMachine.bigCount" min=0 @keydown="onKeyDown" /></td>
-          <td class="forInput"><input type="number" v-model="nextMachine.regCount" min=0 @keydown="onKeyDown" /></td>
+          <td class="forInput"><input type="number" v-model="nextMachine.machineNo" pattern="\d*" min=0 @keydown="onKeyDown" /></td>
+          <td class="forInput"><input type="number" v-model="nextMachine.games" pattern="\d*" min=0  @keydown="onKeyDown" /></td>
+          <td class="forInput"><input type="number" v-model="nextMachine.bigCount" pattern="\d*" min=0 @keydown="onKeyDown" /></td>
+          <td class="forInput"><input type="number" v-model="nextMachine.regCount" pattern="\d*" min=0 @keydown="onKeyDown" /></td>
           <td>1 / {{ calcRatio(nextMachine.games, nextMachine.bigCount) }}</td>
           <td>1 / {{ calcRatio(nextMachine.games, nextMachine.regCount) }}</td>
           <td>1 / {{ calcRatio(nextMachine.games, nextMachine.bigCount + nextMachine.regCount) }}</td>
