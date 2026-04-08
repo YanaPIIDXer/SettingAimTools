@@ -9,3 +9,7 @@
 .usN {
   user-select: none !important;
 }
+
+body {
+  font-size: 24px;
+}
