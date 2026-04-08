@@ -7,7 +7,12 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: () => import('@/presentations/views/HomeView.vue'),
-    }
+    },
+    {
+      path: '/prob-calc',
+      name: 'prob-calc',
+      component: () => import('@/presentations/views/ProbCalc.vue'),
+    },
   ],
 })
 

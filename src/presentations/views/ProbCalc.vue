@@ -2,8 +2,8 @@
 </script>
 
 <template>
-  <main id="homeView">
-    <RouterLink to="/prob-calc">確率計算</RouterLink>
+  <main id="probCalcView">
+    <h1>確率計算</h1>
   </main>
 </template>
 
