@@ -110,9 +110,9 @@ const onKeyDown = (e: KeyboardEvent) => {
           <td class="forInput"><input type="number" v-model="nextMachine.games" min=0  @keydown="onKeyDown" /></td>
           <td class="forInput"><input type="number" v-model="nextMachine.bigCount" min=0 @keydown="onKeyDown" /></td>
           <td class="forInput"><input type="number" v-model="nextMachine.regCount" min=0 @keydown="onKeyDown" /></td>
-          <td>{{ calcRatio(nextMachine.games, nextMachine.bigCount) }}</td>
-          <td>{{ calcRatio(nextMachine.games, nextMachine.regCount) }}</td>
-          <td>{{ calcRatio(nextMachine.games, nextMachine.bigCount + nextMachine.regCount) }}</td>
+          <td>1 / {{ calcRatio(nextMachine.games, nextMachine.bigCount) }}</td>
+          <td>1 / {{ calcRatio(nextMachine.games, nextMachine.regCount) }}</td>
+          <td>1 / {{ calcRatio(nextMachine.games, nextMachine.bigCount + nextMachine.regCount) }}</td>
         </tr>
       </tbody>
     </table>
