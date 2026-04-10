@@ -59,6 +59,7 @@ const clear = () => {
   if (!confirm('クリアしますか？')) { return; }
   db.machineGroups.clear();
   currentGroup.value = null;
+  groups.value.splice(0);
 };
 
 onMounted(async () => {
