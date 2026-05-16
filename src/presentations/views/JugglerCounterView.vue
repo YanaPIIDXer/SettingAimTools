@@ -34,32 +34,32 @@ watch(startGames, () => {
   <main id="jugglerCounterView">
     <div>
       <div>
-        <label>開始ゲーム数: <input type="number" v-model="startGames" min="0" /></label>
+        <label>開始ゲーム数: <input type="number" v-model="startGames" pattern="\d*" min="0" /></label>
       </div>
       <div>
-        <label>開始BIG数: <input type="number" v-model="startBigCount" min="0" /></label>
+        <label>開始BIG数: <input type="number" v-model="startBigCount" pattern="\d*" min="0" /></label>
       </div>
       <div>
-        <label>開始REG数: <input type="number" v-model="startRegCount" min="0" /></label>
+        <label>開始REG数: <input type="number" v-model="startRegCount" pattern="\d*" min="0" /></label>
       </div>
     </div>
     <div>
       <div>
-        <label>現在ゲーム数: <input type="number" v-model="currentGames" :min="startGames" /></label>
+        <label>現在ゲーム数: <input type="number" v-model="currentGames" pattern="\d*" :min="startGames" /></label>
       </div>
       <div>
         <label>
-          <button class="countButton" @click="grapeCount++">ブドウ</button> <input type="number" v-model="grapeCount" />
+          <button class="countButton" @click="grapeCount++">ブドウ</button> <input type="number" pattern="\d*" v-model="grapeCount" />
         </label>
       </div>
       <div>
         <label>
-          <button class="countButton" @click="bigCount++">BIG</button> <input type="number" v-model="bigCount" /> + {{ startBigCount }}
+          <button class="countButton" @click="bigCount++">BIG</button> <input type="number" pattern="\d*" v-model="bigCount" /> + {{ startBigCount }}
         </label>
       </div>
       <div>
         <label>
-          <button class="countButton" @click="regCount++">REG</button> <input type="number" v-model="regCount" /> + {{ startRegCount }}
+          <button class="countButton" @click="regCount++">REG</button> <input type="number" pattern="\d*" v-model="regCount" /> + {{ startRegCount }}
         </label>
       </div>
     </div>
