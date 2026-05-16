@@ -6,6 +6,7 @@
     <RouterLink class="link" to="/prob-calc">確率計算</RouterLink>
     <RouterLink class="link" to="/machine-group-memo">台番メモ</RouterLink>
     <RouterLink class="link" to="/total-calc">複数台合算計算</RouterLink>
+    <RouterLink class="link" to="/juggler-counter">ジャグラー小役カウンター</RouterLink>
   </main>
 </template>
 

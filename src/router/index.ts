@@ -23,6 +23,11 @@ const router = createRouter({
       name: 'machine-group-memo',
       component: () => import('@/presentations/views/MachineGroupMemoView.vue'),
     },
+    {
+      path: '/juggler-counter',
+      name: 'juggler-counter',
+      component: () => import('@/presentations/views/JugglerCounterView.vue'),
+    },
   ],
 })
 
